@@ -6,8 +6,29 @@ import Actors from "./Actors";
 import Directors from "./Directors";
 import Movies from "./Movies";
 
+const routes = [
+  { path: "/", component: Home },
+  { path: "/movies", component: Movies },
+  { path: "/directors", component: Directors },
+  { path: "/actors", component: Actors }
+]
+
 function App() {
-  return <div>{/*{code here}*/}</div>;
+  return (
+    <div>
+      <NavBar />
+      <Switch>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            exact
+            component={route.component}
+          />
+        ))}
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
